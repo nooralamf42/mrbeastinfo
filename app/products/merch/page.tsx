@@ -2,7 +2,7 @@
 
 import { RainbowButton } from '@/components/magicui/rainbow-button';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 
 interface MerchCategory {
   title: string;
@@ -10,7 +10,6 @@ interface MerchCategory {
 }
 
 const MerchMenu = () => {
-  const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
 
   const categories: MerchCategory[] = [
     {
@@ -51,12 +50,10 @@ const MerchMenu = () => {
         </h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <div
               key={category.title}
               className="bg-gray-500/30 backdrop-blur-sm rounded-lg p-6 transition-all duration-300 hover:bg-white/20"
-              onMouseEnter={() => setHoveredCategory(index)}
-              onMouseLeave={() => setHoveredCategory(null)}
             >
               <h2 className="text-xl font-bold mb-4 text-secondary">
                 {category.title}

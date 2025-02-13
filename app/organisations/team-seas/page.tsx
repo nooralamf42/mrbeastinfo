@@ -89,7 +89,7 @@ const TeamTrees = () => {
             variants={itemVariants}
           >
             <p className="text-lg md:text-xl leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-lg text-pretty">
-            Team seas's a collaborative fundraiser project by MrBeast and Mark Rober to remove 30 million pounds of trash out of the ocean by donating 1 dollar to clean 1 pound of trash from the ocean.  🌊
+            Team seas&apos;s a collaborative fundraiser project by MrBeast and Mark Rober to remove 30 million pounds of trash out of the ocean by donating 1 dollar to clean 1 pound of trash from the ocean.  🌊
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-lg">

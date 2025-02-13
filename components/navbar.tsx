@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import {motion} from 'motion/react'
+import Image from 'next/image';
 
 const links = [
   {
@@ -170,10 +171,12 @@ const SideNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (value: bo
       className="w-4/5 fixed left-0 top-0 bottom-0 z-[999999] bg-white shadow-xl"
     >
       <div className="relative md:hidden aspect-[16/10] overflow-hidden bg-gray-100">
-        <img
+        <Image
           src="/images/sidebar-bg.webp"
           className="object-cover w-full"
           alt="sidebar image"
+          width={500}
+          height={300}
         />
         <div className="absolute bottom-0 left-0 right-0 ml-6 mb-5 rounded-lg w-fit px-4 py-2 backdrop-blur-xl bg-white/80">
           <h2 className="font-semibold text-xl">

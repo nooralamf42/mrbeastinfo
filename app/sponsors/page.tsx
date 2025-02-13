@@ -1,6 +1,7 @@
 'use client'
 
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import Image from "next/image";
 
 
 export default function OrbitingCirclesDemo() {
@@ -48,35 +49,35 @@ export default function OrbitingCirclesDemo() {
 }
 
 const Icons = {
-  stumbleGuys: () => (<img src='images/stumbleguys.svg' className='size-40 object-contain' />),
-  acorns: () => (<img src='images/acorns.svg' className='size-40 object-contain' />),
-  cirkul: () => (<img src='images/cirkul.svg' className='size-40 object-contain' />),
-  jinx: () => (<img src='images/jinx.avif' className='size-40 object-contain' />),
-  surfshark: () => (<img src='images/surfshark.png' className='size-40 object-contain' />),
-  immotals: () => (<img src='images/immotals.svg' className='size-40 object-contain' />),
-  verizon: () => (<img src='images/verizon.png' className='size-40 object-contain' />),
-  lectricBikes: () => (<img src='images/lectric bikes.avif' className='size-40 object-contain' />),
-  shopapp: () => (<img src='images/shopapp.svg' className='size-40 object-contain' />),
-  UNO: () => (<img src='images/UNO.png' className='size-40 object-contain' />),
-  freefire: () => (<img src='images/freefire.png' className='size-40 object-contain' />),
-  genshinImpact: () => (<img src='images/genshinimpact.webp' className='size-40 object-contain' />),
-  ubisoft: () => (<img src='images/ubisoft.png' className='size-40 object-contain' />),
-  displate: () => (<img src='images/displate.svg' className='size-40 object-contain' />),
-  recroom: () => (<img src='images/recroom.png' className='size-40 object-contain' />),
-  pringles: () => (<img src='images/pringles.svg' className='size-40 object-contain' />),
-  cheezit: () => (<img src='images/cheezit.svg' className='size-40 object-contain' />),
-  ea: () => (<img src='images/ea.svg' className='size-40 object-contain' />),
-  theBattleCats: () => (<img src='images/thebattlecats.png' className='size-40 object-contain' />),
-  omaze: () => (<img src='images/omaze.svg' className='size-40 object-contain' />),
-  skillshare: () => (<img src='images/skillshare.png' className='size-40 object-contain' />),
-  betterhelp: () => (<img src='images/betterhelp.png' className='size-40 object-contain' />),
-  sunmaid: () => (<img src='images/sunmaid.webp' className='size-40 object-contain' />),
-  kindsnacks: () => (<img src='images/kindsnacks.svg' className='size-40 object-contain' />),
-  topEleven: () => (<img src='images/topeleven.png' className='size-40 object-contain' />),
-  nordvpn: () => (<img src='images/nordvpn.png' className='size-40 object-contain' />),
-  brawlstars: () => (<img src='images/brawlstars.webp' className='size-40 object-contain' />),
-  antartic: () => (<img src='images/antartic.jpg' className='size-40 object-contain' />),
-  shopify: () => (<img src='images/shopify.png' className='size-40 object-contain' />),
-  helloNeighbour2: () => (<img src='images/helloneighbour2.avif' className='size-40 object-contain' />),
-  divineKnockout: () => (<img src='images/divineknockout.webp' className='size-40 object-contain' />)
+  stumbleGuys: () => (<Image alt='bg img' width={10} height={10}  src='/images/stumbleguys.svg' className='size-40 object-contain' />),
+  acorns: () => (<Image alt='bg img' width={10} height={10}  src='/images/acorns.svg' className='size-40 object-contain' />),
+  cirkul: () => (<Image alt='bg img' width={10} height={10}  src='/images/cirkul.svg' className='size-40 object-contain' />),
+  jinx: () => (<Image alt='bg img' width={10} height={10}  src='/images/jinx.avif' className='size-40 object-contain' />),
+  surfshark: () => (<Image alt='bg img' width={10} height={10}  src='/images/surfshark.png' className='size-40 object-contain' />),
+  immotals: () => (<Image alt='bg img' width={10} height={10}  src='/images/immotals.svg' className='size-40 object-contain' />),
+  verizon: () => (<Image alt='bg img' width={10} height={10}  src='/images/verizon.png' className='size-40 object-contain' />),
+  lectricBikes: () => (<Image alt='bg img' width={10} height={10}  src='/images/lectric bikes.avif' className='size-40 object-contain' />),
+  shopapp: () => (<Image alt='bg img' width={10} height={10}  src='/images/shopapp.svg' className='size-40 object-contain' />),
+  UNO: () => (<Image alt='bg img' width={10} height={10}  src='/images/UNO.png' className='size-40 object-contain' />),
+  freefire: () => (<Image alt='bg img' width={10} height={10}  src='/images/freefire.png' className='size-40 object-contain' />),
+  genshinImpact: () => (<Image alt='bg img' width={10} height={10}  src='/images/genshinimpact.webp' className='size-40 object-contain' />),
+  ubisoft: () => (<Image alt='bg img' width={10} height={10}  src='/images/ubisoft.png' className='size-40 object-contain' />),
+  displate: () => (<Image alt='bg img' width={10} height={10}  src='/images/displate.svg' className='size-40 object-contain' />),
+  recroom: () => (<Image alt='bg img' width={10} height={10}  src='/images/recroom.png' className='size-40 object-contain' />),
+  pringles: () => (<Image alt='bg img' width={10} height={10}  src='/images/pringles.svg' className='size-40 object-contain' />),
+  cheezit: () => (<Image alt='bg img' width={10} height={10}  src='/images/cheezit.svg' className='size-40 object-contain' />),
+  ea: () => (<Image alt='bg img' width={10} height={10}  src='/images/ea.svg' className='size-40 object-contain' />),
+  theBattleCats: () => (<Image alt='bg img' width={10} height={10}  src='/images/thebattlecats.png' className='size-40 object-contain' />),
+  omaze: () => (<Image alt='bg img' width={10} height={10}  src='/images/omaze.svg' className='size-40 object-contain' />),
+  skillshare: () => (<Image alt='bg img' width={10} height={10}  src='/images/skillshare.png' className='size-40 object-contain' />),
+  betterhelp: () => (<Image alt='bg img' width={10} height={10}  src='/images/betterhelp.png' className='size-40 object-contain' />),
+  sunmaid: () => (<Image alt='bg img' width={10} height={10}  src='/images/sunmaid.webp' className='size-40 object-contain' />),
+  kindsnacks: () => (<Image alt='bg img' width={10} height={10}  src='/images/kindsnacks.svg' className='size-40 object-contain' />),
+  topEleven: () => (<Image alt='bg img' width={10} height={10}  src='/images/topeleven.png' className='size-40 object-contain' />),
+  nordvpn: () => (<Image alt='bg img' width={10} height={10}  src='/images/nordvpn.png' className='size-40 object-contain' />),
+  brawlstars: () => (<Image alt='bg img' width={10} height={10}  src='/images/brawlstars.webp' className='size-40 object-contain' />),
+  antartic: () => (<Image alt='bg img' width={10} height={10}  src='/images/antartic.jpg' className='size-40 object-contain' />),
+  shopify: () => (<Image alt='bg img' width={10} height={10}  src='/images/shopify.png' className='size-40 object-contain' />),
+  helloNeighbour2: () => (<Image alt='bg img' width={10} height={10}  src='/images/helloneighbour2.avif' className='size-40 object-contain' />),
+  divineKnockout: () => (<Image alt='bg img' width={10} height={10}  src='/images/divineknockout.webp' className='size-40 object-contain' />)
 };

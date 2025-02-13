@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React, { PropsWithChildren } from "react";
 
@@ -35,7 +36,7 @@ export default function BgManger({ children }: PropsWithChildren) {
   };
   return (
     <>
-      <img src={imageHandler()} className="min-h-screen object-cover w-full fixed inset-0"/>
+      <Image alt="background image" src={imageHandler()} width={100} height={100} className="min-h-screen object-cover w-full fixed inset-0"/>
       <div className="inset-0 bg-black/50 fixed"></div>
       <div className="relative">{children}</div>
     </>

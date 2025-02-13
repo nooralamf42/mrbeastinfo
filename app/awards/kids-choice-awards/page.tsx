@@ -89,11 +89,11 @@ const KidsChoiceAwards = () => {
             variants={itemVariants}
           >
             <p className="text-lg md:text-xl leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-lg">
-              MrBeast is a one time Kids' Choice Awards Winner. 🌟
+              MrBeast is a one time Kids&apos; Choice Awards Winner. 🌟
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-lg">
-              He won the award in 2022 at the 35th annual Nickelodeon Kids' Choice Awards. 🎉
+              He won the award in 2022 at the 35th annual Nickelodeon Kids&apos; Choice Awards. 🎉
             </p>
 
             <p className="text-lg md:text-xl leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-lg">

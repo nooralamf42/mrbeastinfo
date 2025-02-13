@@ -3,7 +3,8 @@
 import React from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { BsFacebook, BsInstagram, BsSnapchat, BsTiktok, BsTwitch, BsTwitter, BsTwitterX, BsYoutube } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsSnapchat, BsTiktok, BsTwitch, BsTwitterX, BsYoutube } from "react-icons/bs";
+import Image from "next/image";
 
 type ChannelInfoCardProps = {
   image: string;
@@ -22,10 +23,7 @@ export default function ChannelInfoCard({
   subscribersNumber,
   subsriberValue,
   socialIcon,
-  index,
 }: ChannelInfoCardProps) {
-  const rowNumber = () => Math.floor(index / 3);
-  const colNumber = () => Math.floor(index % 3);
   return (
     <motion.div
       initial={{
@@ -44,9 +42,11 @@ export default function ChannelInfoCard({
     >
       <Link href={url} className="flex lg:flex-row w-[140px] md:w-[300px] xl:w-[350px] items-center flex-col gap-3 md:gap-6 group text-white md:text-nowrap">
         <div className="relative flex gap-1 items-center justify-center flex-shrink-0">
-          <img
+          <Image
             src={image} 
             className="rounded-full size-12 md:size-13  z-20"
+            width={12}
+            height={12}
             alt={channelName + "image"}
           />
           {socialIcon ? (
