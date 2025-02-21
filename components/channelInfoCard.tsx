@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { BsFacebook, BsInstagram, BsSnapchat, BsTiktok, BsTwitch, BsTwitterX, BsYoutube } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsSnapchat, BsTiktok, BsTwitch, BsTwitterX} from "react-icons/bs";
 import { ImYoutube2 } from "react-icons/im";
 
 type ChannelInfoCardProps = {
