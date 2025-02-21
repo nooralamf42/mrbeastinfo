@@ -72,7 +72,7 @@ const MerchMenu = () => {
           ))}
         </div>
 
-        <Link className='block text-center' target="_blank" href={'https://www.mrbeastburger.com/'}><RainbowButton className='text-white/90 mx-auto font-bold text-xl px-8 py-6 tracking-wider'>SHOP NOW</RainbowButton></Link>
+        <Link className='block text-center mt-5' target="_blank" href={'https://www.mrbeastburger.com/'}><RainbowButton className='text-white/90 mx-auto font-bold text-xl px-8 py-6 tracking-wider'>SHOP NOW</RainbowButton></Link>
       </div>
     </div>
   );

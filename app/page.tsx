@@ -1,6 +1,7 @@
 'use client'
 
 import ChannelInfoCard from '@/components/channelInfoCard'
+import {motion} from 'motion/react'
 export default function page() {
   type FollowerInfo = {
     image: string;
@@ -191,8 +192,18 @@ export default function page() {
   ]
   return (
     <div className='px-4 mx-auto container h-[100vh] relative py-12'>
-      <h1 className='text-3xl text-center mb-10 text-white'>All Followers Details</h1>
-      <div className='grid w-fit gap-10 md:gap-20 grid-cols-2 xl:grid-cols-3 mx-auto pb-40'>
+      <motion.h1 className='text-3xl text-center mb-10 text-white' 
+      initial={{
+        filter: 'blur(5px)'
+      }} 
+      whileInView={{
+        filter: 'blur(0)'
+      }}
+      transition={{
+        duration:0.3
+      }}
+      >All Followers Details</motion.h1>
+      <div className='grid w-fit gap-10 md:gap-20 grid-cols-2 md:grid-cols-3 mx-auto pb-40'>
         {
           followersInfo.map((cardData, index) => (
             <ChannelInfoCard 
