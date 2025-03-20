@@ -7,7 +7,7 @@ interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
 }
 
-const ApplicationForm: React.FC<ApplicationFormProps> = ({ onSubmit }) => {
+const page: React.FC<ApplicationFormProps> = ({ onSubmit }) => {
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
   const [dateInputValue, setDateInputValue] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
@@ -342,7 +342,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ onSubmit }) => {
   );
 };
 
-export default ApplicationForm;
+export default page;
 
 
 
