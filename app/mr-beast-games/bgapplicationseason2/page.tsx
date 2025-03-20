@@ -1,33 +1,14 @@
+
 'use client'
 
-import React, { useState} from 'react';
-import ReCAPTCHA from "react-google-recaptcha"
-
-
-
-const page = () => {
-  
-  return (
-    <main className='mb-40 px-4 md:px-8'>
-      <div className="w-full max-w-4xl mx-auto bg-white pt-10 pb-7 anton-regular mt-12 md:mt-24 mb-6">
-      <h1 className="text-4xl font-bold text-center mb-6">Beast Games Season 2 Application</h1>
-      </div>
-      
-    <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-b-lg pb-20">
-  
-      
-    </div>
-    </main>
-  );
-};
-
-export default page;
-
+import React, { useState } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
 }
-const FormCom = ({ onSubmit }:ApplicationFormProps) =>{
+
+const FormCom = ({ onSubmit }: ApplicationFormProps) => {
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
   const [dateInputValue, setDateInputValue] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
@@ -175,182 +156,204 @@ const FormCom = ({ onSubmit }:ApplicationFormProps) =>{
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
-        <div className="mb-6">
-          <label className="block text-lg font-bold mb-2 tracking-tight">
-            Please enter your Date of Birth to begin <span className="text-red-500">*</span>
-          </label>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="MM/DD/YYYY"
-              value={dateInputValue}
-              onClick={() => setShowCalendar(true)}
-              readOnly
-              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="button"
-              onClick={() => setShowCalendar(!showCalendar)}
-              className="absolute right-2 top-2 text-gray-500"
-            >
-              📅
-            </button>
-            
-            {showCalendar && (
-              <div className="absolute z-10 mt-1 bg-white shadow-lg rounded-lg border">
-                <div className="flex justify-between items-center p-2 border-b">
-                  <button type="button" onClick={goToPrevMonth} className="p-1">
-                    &lt;&lt;
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+      <div className="mb-6">
+        <label className="block text-lg font-bold mb-2 tracking-tight">
+          Please enter your Date of Birth to begin <span className="text-red-500">*</span>
+        </label>
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="MM/DD/YYYY"
+            value={dateInputValue}
+            onClick={() => setShowCalendar(true)}
+            readOnly
+            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <button
+            type="button"
+            onClick={() => setShowCalendar(!showCalendar)}
+            className="absolute right-2 top-2 text-gray-500"
+          >
+            📅
+          </button>
+          
+          {showCalendar && (
+            <div className="absolute z-10 mt-1 bg-white shadow-lg rounded-lg border">
+              <div className="flex justify-between items-center p-2 border-b">
+                <button type="button" onClick={goToPrevMonth} className="p-1">
+                  &lt;&lt;
+                </button>
+                <div className="relative">
+                  {/* Month and Year header - clickable */}
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setShowMonthSelector(!showMonthSelector);
+                      setShowYearSelector(false);
+                    }}
+                    className="mr-2 hover:bg-gray-100 px-2 py-1 rounded"
+                  >
+                    {currentMonth.toLocaleString('default', { month: 'long' })}
                   </button>
-                  <div className="relative">
-                    {/* Month and Year header - clickable */}
-                    <button 
-                      type="button" 
-                      onClick={() => {
-                        setShowMonthSelector(!showMonthSelector);
-                        setShowYearSelector(false);
-                      }}
-                      className="mr-2 hover:bg-gray-100 px-2 py-1 rounded"
-                    >
-                      {currentMonth.toLocaleString('default', { month: 'long' })}
-                    </button>
-                    <button 
-                      type="button" 
-                      onClick={() => {
-                        setShowYearSelector(!showYearSelector);
-                        setShowMonthSelector(false);
-                      }}
-                      className="hover:bg-gray-100 px-2 py-1 rounded"
-                    >
-                      {currentMonth.getFullYear()}
-                    </button>
-
-                    {/* Month selector dropdown */}
-                    {showMonthSelector && (
-                      <div className="absolute z-20 mt-1 bg-white shadow-lg rounded-lg border max-h-60 overflow-y-auto w-32">
-                        {monthNames.map((month, index) => (
-                          <button
-                            key={month}
-                            type="button"
-                            onClick={() => handleMonthSelect(index)}
-                            className={`block w-full text-left px-4 py-2 hover:bg-blue-100 ${
-                              currentMonth.getMonth() === index ? 'bg-blue-50' : ''
-                            }`}
-                          >
-                            {month}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Year selector dropdown */}
-                    {showYearSelector && (
-                      <div className="absolute z-20 mt-1 bg-white shadow-lg rounded-lg border max-h-60 overflow-y-auto w-24">
-                        {generateYears().map((year) => (
-                          <button
-                            key={year}
-                            type="button"
-                            onClick={() => handleYearSelect(year)}
-                            className={`block w-full text-left px-4 py-2 hover:bg-blue-100 ${
-                              currentMonth.getFullYear() === year ? 'bg-blue-50' : ''
-                            }`}
-                          >
-                            {year}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <button type="button" onClick={goToNextMonth} className="p-1">
-                    &gt;&gt;
+                  <button 
+                    type="button" 
+                    onClick={() => {
+                      setShowYearSelector(!showYearSelector);
+                      setShowMonthSelector(false);
+                    }}
+                    className="hover:bg-gray-100 px-2 py-1 rounded"
+                  >
+                    {currentMonth.getFullYear()}
                   </button>
-                </div>
-                
-                <div className="grid grid-cols-7 gap-1 p-2">
-                  {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) => (
-                    <div key={day} className="text-center font-semibold text-sm py-1">
-                      {day}
+
+                  {/* Month selector dropdown */}
+                  {showMonthSelector && (
+                    <div className="absolute z-20 mt-1 bg-white shadow-lg rounded-lg border max-h-60 overflow-y-auto w-32">
+                      {monthNames.map((month, index) => (
+                        <button
+                          key={month}
+                          type="button"
+                          onClick={() => handleMonthSelect(index)}
+                          className={`block w-full text-left px-4 py-2 hover:bg-blue-100 ${
+                            currentMonth.getMonth() === index ? 'bg-blue-50' : ''
+                          }`}
+                        >
+                          {month}
+                        </button>
+                      ))}
                     </div>
-                  ))}
-                  
-                  {calendarDays.map((day, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => handleDateSelect(day.date)}
-                      className={`
-                        text-center py-1 rounded hover:bg-blue-100
-                        ${!day.isCurrentMonth ? 'text-gray-400' : ''}
-                        ${
-                          dateOfBirth &&
-                          day.date.getDate() === dateOfBirth.getDate() &&
-                          day.date.getMonth() === dateOfBirth.getMonth() &&
-                          day.date.getFullYear() === dateOfBirth.getFullYear()
-                            ? 'bg-blue-500 text-white hover:bg-blue-600'
-                            : ''
-                        }
-                      `}
-                    >
-                      {day.date.getDate()}
-                    </button>
-                  ))}
+                  )}
+
+                  {/* Year selector dropdown */}
+                  {showYearSelector && (
+                    <div className="absolute z-20 mt-1 bg-white shadow-lg rounded-lg border max-h-60 overflow-y-auto w-24">
+                      {generateYears().map((year) => (
+                        <button
+                          key={year}
+                          type="button"
+                          onClick={() => handleYearSelect(year)}
+                          className={`block w-full text-left px-4 py-2 hover:bg-blue-100 ${
+                            currentMonth.getFullYear() === year ? 'bg-blue-50' : ''
+                          }`}
+                        >
+                          {year}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                
-                <button
-                  type="button"
-                  onClick={() => handleDateSelect(new Date())}
-                  className="w-full p-2 text-center text-blue-500 hover:bg-blue-50 border-t"
-                >
-                  Today
+                <button type="button" onClick={goToNextMonth} className="p-1">
+                  &gt;&gt;
                 </button>
               </div>
-            )}
-          </div>
-          {dateOfBirth && isAdult === false && (
-            <p className="text-red-500 mt-2">
-              You must be at least 18 years old to apply.
-            </p>
+              
+              <div className="grid grid-cols-7 gap-1 p-2">
+                {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) => (
+                  <div key={day} className="text-center font-semibold text-sm py-1">
+                    {day}
+                  </div>
+                ))}
+                
+                {calendarDays.map((day, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleDateSelect(day.date)}
+                    className={`
+                      text-center py-1 rounded hover:bg-blue-100
+                      ${!day.isCurrentMonth ? 'text-gray-400' : ''}
+                      ${
+                        dateOfBirth &&
+                        day.date.getDate() === dateOfBirth.getDate() &&
+                        day.date.getMonth() === dateOfBirth.getMonth() &&
+                        day.date.getFullYear() === dateOfBirth.getFullYear()
+                          ? 'bg-blue-500 text-white hover:bg-blue-600'
+                          : ''
+                      }
+                    `}
+                  >
+                    {day.date.getDate()}
+                  </button>
+                ))}
+              </div>
+              
+              <button
+                type="button"
+                onClick={() => handleDateSelect(new Date())}
+                className="w-full p-2 text-center text-blue-500 hover:bg-blue-50 border-t"
+              >
+                Today
+              </button>
+            </div>
           )}
         </div>
-        
-        <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">
-            Please verify yourself via CAPTCHA <span className="text-red-500">*</span>
-          </label>
-          <div>
-            <ReCAPTCHA
-              sitekey="6Lf7afkqAAAAAA9xTyceSRdzSCJN1N_tXin8_Bk7" // This is a test key
-              onChange={handleCaptchaVerify}
-            />
-          </div>
-        </div>
-        
-        <div>
-          <button
-            type="submit"
-            disabled={!dateOfBirth || !captchaVerified || isAdult === false}
-            className={`
-              px-4 py-2 rounded-lg text-white font-semibold
-              ${
-                !dateOfBirth || !captchaVerified || isAdult === false
-                  ? 'hidden'
-                  : 'bg-black'
-              }
-            `}
-          >
-            Submit
-          </button>
-        </div>
-        
-        {formSubmitted && (
-          <div className="mt-6 p-4 bg-green-100 text-green-800 rounded-lg">
-            Your application has been submitted successfully!
-          </div>
+        {dateOfBirth && isAdult === false && (
+          <p className="text-red-500 mt-2">
+            You must be at least 18 years old to apply.
+          </p>
         )}
-      </form>
+      </div>
+      
+      <div className="mb-6">
+        <label className="block text-lg font-semibold mb-2">
+          Please verify yourself via CAPTCHA <span className="text-red-500">*</span>
+        </label>
+        <div>
+          <ReCAPTCHA
+            sitekey="6Lf7afkqAAAAAA9xTyceSRdzSCJN1N_tXin8_Bk7" // This is a test key
+            onChange={handleCaptchaVerify}
+          />
+        </div>
+      </div>
+      
+      <div>
+        <button
+          type="submit"
+          disabled={!dateOfBirth || !captchaVerified || isAdult === false}
+          className={`
+            px-4 py-2 rounded-lg text-white font-semibold
+            ${
+              !dateOfBirth || !captchaVerified || isAdult === false
+                ? 'hidden'
+                : 'bg-black'
+            }
+          `}
+        >
+          Submit
+        </button>
+      </div>
+      
+      {formSubmitted && (
+        <div className="mt-6 p-4 bg-green-100 text-green-800 rounded-lg">
+          Your application has been submitted successfully!
+        </div>
+      )}
+    </form>
+  );
+};
 
-}
+const Page = () => {
+  const handleFormSubmit = (formData: { dateOfBirth: Date; isAdult: boolean }) => {
+    console.log('Form submitted:', formData);
+    // Handle form submission logic here
+  };
+  
+  return (
+    <main className='mb-40 px-4 md:px-8'>
+      <div className="w-full max-w-4xl mx-auto bg-white pt-10 pb-7 anton-regular mt-12 md:mt-24 mb-6">
+        <h1 className="text-4xl font-bold text-center mb-6">Beast Games Season 2 Application</h1>
+      </div>
+      
+      <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-b-lg pb-20">
+        <FormCom onSubmit={handleFormSubmit} />
+      </div>
+    </main>
+  );
+};
+
+export default Page;
 
 // const EligibilityRequirements: React.FC = () => {
 //   const [agreementChecked, setAgreementChecked] = useState<boolean | null>(null);
