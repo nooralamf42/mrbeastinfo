@@ -7,7 +7,7 @@ interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
 }
 
-const page: React.FC<ApplicationFormProps> = ({ onSubmit }) => {
+const page = ({ onSubmit }:ApplicationFormProps) => {
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
   const [dateInputValue, setDateInputValue] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
