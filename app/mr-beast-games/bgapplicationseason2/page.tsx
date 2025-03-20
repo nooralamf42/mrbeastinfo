@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import ReCAPTCHA from "react-google-recaptcha"
 
 interface ApplicationFormProps {
@@ -346,113 +346,113 @@ export default ApplicationForm;
 
 
 
-const EligibilityRequirements: React.FC = () => {
-  const [agreementChecked, setAgreementChecked] = useState<boolean | null>(null);
-  const [falseInfoChecked, setFalseInfoChecked] = useState<boolean | null>(null);
+// const EligibilityRequirements: React.FC = () => {
+//   const [agreementChecked, setAgreementChecked] = useState<boolean | null>(null);
+//   const [falseInfoChecked, setFalseInfoChecked] = useState<boolean | null>(null);
 
-  const handleAgreementChange = (value: boolean) => {
-    setAgreementChecked(value);
-  };
+//   const handleAgreementChange = (value: boolean) => {
+//     setAgreementChecked(value);
+//   };
 
-  const handleFalseInfoChange = (value: boolean) => {
-    setFalseInfoChecked(value);
-  };
+//   const handleFalseInfoChange = (value: boolean) => {
+//     setFalseInfoChecked(value);
+//   };
 
-  const handleNext = () => {
-    // Handle next button click - navigate to next page or submit form
-    console.log("Next button clicked");
-  };
+//   const handleNext = () => {
+//     // Handle next button click - navigate to next page or submit form
+//     console.log("Next button clicked");
+//   };
 
-  // Check if both options are selected as "Yes"
-  const canProceed = agreementChecked === true && falseInfoChecked === true;
+//   // Check if both options are selected as "Yes"
+//   const canProceed = agreementChecked === true && falseInfoChecked === true;
 
-  return (
-    <div className="w-full max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">CONTESTANT APPLICATION</h1>
+//   return (
+//     <div className="w-full max-w-4xl mx-auto p-6">
+//       <h1 className="text-3xl font-bold text-center mb-6">CONTESTANT APPLICATION</h1>
       
-      <h2 className="text-2xl font-bold mb-4">PART I: ELIGIBILITY REQUIREMENTS</h2>
+//       <h2 className="text-2xl font-bold mb-4">PART I: ELIGIBILITY REQUIREMENTS</h2>
       
-      <div className="mb-6">
-        <p className="font-bold mb-2">
-          You must meet these eligibility requirements to compete in BEAST GAMES SEASON 2!
-        </p>
-        <ul className="list-disc pl-8 space-y-2">
-          <li>You need to be 18 or older by the time you submit for a chance to compete in the BEAST GAMES SEASON 2.</li>
-          <li>You need to have a valid passport that is good through January 2026.</li>
-          <li>You either need to be a legal citizen of the U.S. and able to legally travel and re-enter the U.S. from any foreign country or a permanent resident, green card holder, or have a work visa (e.g., HB-1, O1).</li>
-          <li>You need to have a valid U.S. Social Security or Tax ID number, or have appropriate visa(s) or waiver(s) to allow you to legally compete in BEAST GAMES in the United States.</li>
-          <li>You need to be free of any obligations and able to travel internationally for up to six consecutive weeks during the period of May to July 2025 (dates are subject to change). For purposes of contest secrecy and integrity, those who chose to compete in BEAST GAMES will need to be free of any and all obligations for the duration of the competition (including any personal, family or work demands or responsibilities) and without interference or interruption of any type.</li>
-          <li>You must not be a current candidate for public office or intend to be or intend to run for public office within one year as of July 1st, 2026.</li>
-          <li>You are not currently employed by or closely connected to anyone who is involved with the creation, production, administration or judging of BEAST GAMES or anyone working on the MrBeast YouTube channel.</li>
-        </ul>
-      </div>
+//       <div className="mb-6">
+//         <p className="font-bold mb-2">
+//           You must meet these eligibility requirements to compete in BEAST GAMES SEASON 2!
+//         </p>
+//         <ul className="list-disc pl-8 space-y-2">
+//           <li>You need to be 18 or older by the time you submit for a chance to compete in the BEAST GAMES SEASON 2.</li>
+//           <li>You need to have a valid passport that is good through January 2026.</li>
+//           <li>You either need to be a legal citizen of the U.S. and able to legally travel and re-enter the U.S. from any foreign country or a permanent resident, green card holder, or have a work visa (e.g., HB-1, O1).</li>
+//           <li>You need to have a valid U.S. Social Security or Tax ID number, or have appropriate visa(s) or waiver(s) to allow you to legally compete in BEAST GAMES in the United States.</li>
+//           <li>You need to be free of any obligations and able to travel internationally for up to six consecutive weeks during the period of May to July 2025 (dates are subject to change). For purposes of contest secrecy and integrity, those who chose to compete in BEAST GAMES will need to be free of any and all obligations for the duration of the competition (including any personal, family or work demands or responsibilities) and without interference or interruption of any type.</li>
+//           <li>You must not be a current candidate for public office or intend to be or intend to run for public office within one year as of July 1st, 2026.</li>
+//           <li>You are not currently employed by or closely connected to anyone who is involved with the creation, production, administration or judging of BEAST GAMES or anyone working on the MrBeast YouTube channel.</li>
+//         </ul>
+//       </div>
       
-      <div className="mb-6">
-        <p className="font-bold mb-2">
-          I acknowledge and agree that I have read each of the Eligibility Requirements above and that I meet each of them: <span className="text-red-500">*</span>
-        </p>
-        <div className="flex space-x-4 mt-2">
-          <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
-            <input
-              type="radio"
-              name="eligibilityAgreement"
-              checked={agreementChecked === true}
-              onChange={() => handleAgreementChange(true)}
-              className="mr-2"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
-            <input
-              type="radio"
-              name="eligibilityAgreement"
-              checked={agreementChecked === false}
-              onChange={() => handleAgreementChange(false)}
-              className="mr-2"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
+//       <div className="mb-6">
+//         <p className="font-bold mb-2">
+//           I acknowledge and agree that I have read each of the Eligibility Requirements above and that I meet each of them: <span className="text-red-500">*</span>
+//         </p>
+//         <div className="flex space-x-4 mt-2">
+//           <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
+//             <input
+//               type="radio"
+//               name="eligibilityAgreement"
+//               checked={agreementChecked === true}
+//               onChange={() => handleAgreementChange(true)}
+//               className="mr-2"
+//             />
+//             <span>Yes</span>
+//           </label>
+//           <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
+//             <input
+//               type="radio"
+//               name="eligibilityAgreement"
+//               checked={agreementChecked === false}
+//               onChange={() => handleAgreementChange(false)}
+//               className="mr-2"
+//             />
+//             <span>No</span>
+//           </label>
+//         </div>
+//       </div>
       
-      <div className="mb-6">
-        <p className="font-bold mb-2">
-          I acknowledge and agree that submitting false, inaccurate, misleading or incomplete information in this submission or other materials submitted to BEAST GAMES may result in my disqualification from the selection process or from participation in BEAST GAMES, regardless of when such information is discovered. <span className="text-red-500">*</span>
-        </p>
-        <div className="flex space-x-4 mt-2">
-          <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
-            <input
-              type="radio"
-              name="falseInfoAgreement"
-              checked={falseInfoChecked === true}
-              onChange={() => handleFalseInfoChange(true)}
-              className="mr-2"
-            />
-            <span>Yes</span>
-          </label>
-          <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
-            <input
-              type="radio"
-              name="falseInfoAgreement"
-              checked={falseInfoChecked === false}
-              onChange={() => handleFalseInfoChange(false)}
-              className="mr-2"
-            />
-            <span>No</span>
-          </label>
-        </div>
-      </div>
+//       <div className="mb-6">
+//         <p className="font-bold mb-2">
+//           I acknowledge and agree that submitting false, inaccurate, misleading or incomplete information in this submission or other materials submitted to BEAST GAMES may result in my disqualification from the selection process or from participation in BEAST GAMES, regardless of when such information is discovered. <span className="text-red-500">*</span>
+//         </p>
+//         <div className="flex space-x-4 mt-2">
+//           <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
+//             <input
+//               type="radio"
+//               name="falseInfoAgreement"
+//               checked={falseInfoChecked === true}
+//               onChange={() => handleFalseInfoChange(true)}
+//               className="mr-2"
+//             />
+//             <span>Yes</span>
+//           </label>
+//           <label className="flex items-center border rounded-lg px-6 py-2 cursor-pointer">
+//             <input
+//               type="radio"
+//               name="falseInfoAgreement"
+//               checked={falseInfoChecked === false}
+//               onChange={() => handleFalseInfoChange(false)}
+//               className="mr-2"
+//             />
+//             <span>No</span>
+//           </label>
+//         </div>
+//       </div>
       
-      {canProceed && (
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={handleNext}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg"
-          >
-            Next
-          </button>
-        </div>
-      )}
-    </div>
-  );
-};
+//       {canProceed && (
+//         <div className="flex justify-center mt-8">
+//           <button
+//             onClick={handleNext}
+//             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg"
+//           >
+//             Next
+//           </button>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };

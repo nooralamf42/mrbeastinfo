@@ -17,7 +17,7 @@ const eslintConfig = [
       "@next/next/no-img-element": "off",
       "jsx-a11y/alt-text": "off",
       "jsx-a11y/img-redundant-alt": "off",
-
+      
       // Disable all TypeScript expression-related rules
       "@typescript-eslint/no-unused-expressions": "off",
       "typescript-eslint/no-unused-expressions": "off",
@@ -27,7 +27,7 @@ const eslintConfig = [
       "no-unused-expressions": "off",
 
       // Disable React-related rules
-      "react/no-unescaped-entities": "off",
+      "react/no-unescaped-entities": "off", // ✅ Only once
       "react-hooks/rules-of-hooks": "off",
       "react-hooks/exhaustive-deps": "off",
 
@@ -37,8 +37,8 @@ const eslintConfig = [
     },
     languageOptions: {
       parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
+        ecmaVersion: "latest",
+        sourceType: "module",
         ecmaFeatures: {
           jsx: true
         }
@@ -46,7 +46,10 @@ const eslintConfig = [
     }
   },
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript"]
+    extends: ["next/core-web-vitals", "next/typescript"],
+    rules: {
+      "react/no-unescaped-entities": 0
+    }
   })
 ];
 

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -8,9 +9,11 @@ const Footer = () => {
 
       <div className="max-w-[1500px] mx-auto px-4 py-12">
       <Link href={'/mr-beast-games'} className="">
-            <img 
+            <Image 
               src="/images/logobeastGamesNoText.webp" 
               alt="Beast Games Logo" 
+              width={500} // Specify width
+  height={300}
               className="max-w-[181px] mx-auto"
             />
           </Link>
