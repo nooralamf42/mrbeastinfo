@@ -3,11 +3,31 @@
 import React, { useState} from 'react';
 import ReCAPTCHA from "react-google-recaptcha"
 
+
+
+const page = () => {
+  
+  return (
+    <main className='mb-40 px-4 md:px-8'>
+      <div className="w-full max-w-4xl mx-auto bg-white pt-10 pb-7 anton-regular mt-12 md:mt-24 mb-6">
+      <h1 className="text-4xl font-bold text-center mb-6">Beast Games Season 2 Application</h1>
+      </div>
+      
+    <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-b-lg pb-20">
+  
+      
+    </div>
+    </main>
+  );
+};
+
+export default page;
+
+
 interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
 }
-
-const page = ({ onSubmit }:ApplicationFormProps) => {
+const FormCom = ({ onSubmit }:ApplicationFormProps) =>{
   const [dateOfBirth, setDateOfBirth] = useState<Date | null>(null);
   const [dateInputValue, setDateInputValue] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
@@ -155,15 +175,7 @@ const page = ({ onSubmit }:ApplicationFormProps) => {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  return (
-    <main className='mb-40 px-4 md:px-8'>
-      <div className="w-full max-w-4xl mx-auto bg-white pt-10 pb-7 anton-regular mt-12 md:mt-24 mb-6">
-      <h1 className="text-4xl font-bold text-center mb-6">Beast Games Season 2 Application</h1>
-      </div>
-      
-    <div className="w-full max-w-4xl mx-auto bg-white p-6 rounded-b-lg pb-20">
-  
-      <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+  <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
         <div className="mb-6">
           <label className="block text-lg font-bold mb-2 tracking-tight">
             Please enter your Date of Birth to begin <span className="text-red-500">*</span>
@@ -337,14 +349,8 @@ const page = ({ onSubmit }:ApplicationFormProps) => {
           </div>
         )}
       </form>
-    </div>
-    </main>
-  );
-};
 
-export default page;
-
-
+}
 
 // const EligibilityRequirements: React.FC = () => {
 //   const [agreementChecked, setAgreementChecked] = useState<boolean | null>(null);
