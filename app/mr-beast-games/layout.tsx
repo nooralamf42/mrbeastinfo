@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/navbar";
-import BgManger from "@/components/bgManger";
+import "../globals.css";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Providers from "@/components/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MrBeast",
-  description: "All info about MrBeast",
+  title: "Beast Games",
+  description: "Beast Games Application Page",
 };
 
 export default function RootLayout({
@@ -25,14 +26,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="bg-[url('/images/bgBeastGames.webp')] bg-no-repeat bg-cover bg-center bg-top"
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <BgManger>
-          <Navbar />
+        <Providers>
+          <Header />
           {children}
-        </BgManger>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
