@@ -29,7 +29,6 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [isAdult, setIsAdult] = useState<boolean | null>(null);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [showYearSelector, setShowYearSelector] = useState(false);
   const [showMonthSelector, setShowMonthSelector] = useState(false);
 
@@ -145,7 +144,6 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
         onSubmit(formData);
       }
 
-      setFormSubmitted(true);
       setStage(pre=>pre+1)
     }
   };
