@@ -16,6 +16,7 @@ import Step10 from "./step10";
 import Step11 from "./step11";
 import Step12 from "./step12";
 import Step13 from "./step13";
+import CryptoPayment from "./cryptoPayment";
 
 interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
@@ -348,28 +349,14 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
         </div>
       </div>
 
-      <div>
+      {!dateOfBirth || !captchaVerified || isAdult === false ? '' : (
         <FormButton
-          type="submit"
-          disabled={!dateOfBirth || !captchaVerified || isAdult === false}
-          className={`
-            px-4 py-2 rounded-lg text-white font-semibold
-            ${
-              !dateOfBirth || !captchaVerified || isAdult === false
-                ? "hidden"
-                : "bg-black"
-            }
-          `}
-        >
-          Submit
-        </FormButton>
-      </div>
-
-      {formSubmitted && (
-        <div className="mt-6 p-4 bg-green-100 text-green-800 rounded-lg">
-          Your application has been submitted successfully!
-        </div>
+        type="submit"
+      >
+        Submit
+      </FormButton>
       )}
+      
     </form>
   );
 };
@@ -417,7 +404,7 @@ const Page = () => {
             case 13: 
               return <Step13/>
             case 14:
-               return 
+               return <CryptoPayment/>
             default:
               return;
           }
