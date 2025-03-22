@@ -59,7 +59,7 @@ const Step3 = () => {
           </div>
           {canProceed && (
         <div className="flex">
-          <FormButton>Next</FormButton>
+          <FormButton >Next</FormButton>
         </div>
       )}
         </div>

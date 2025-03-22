@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import FormButton from "./formButton";
-import {useAtomValue } from "jotai";
+import {useAtomValue, useSetAtom } from "jotai";
 import { steps } from "@/app/store/atoms";
 import Step3 from "./step3";
 import Step4 from "./step4";
@@ -129,7 +129,7 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
   const handleCaptchaVerify = (token: string | null) => {
     setCaptchaVerified(!!token);
   };
-
+  const setStage = useSetAtom(steps)
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,6 +145,7 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
       }
 
       setFormSubmitted(true);
+      setStage(pre=>pre+1)
     }
   };
 
@@ -187,7 +188,7 @@ const FormCom = ({ onSubmit }: ApplicationFormProps) => {
   ];
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto px-5">
       <div className="mb-6">
         <label className="block text-lg font-bold mb-2 tracking-tight">
           Please enter your Date of Birth to begin{" "}
@@ -593,7 +594,7 @@ const EligibilityRequirements: React.FC = () => {
 
       {canProceed && (
         <div className="">
-          <FormButton>Next</FormButton>
+          <FormButton >Next</FormButton>
         </div>
       )}
     </div>
@@ -990,7 +991,7 @@ const ReleaseAgreement = () => {
 
       {canProceed && (
         <div className="">
-          <FormButton>Next</FormButton>
+          <FormButton >Next</FormButton>
         </div>
       )}
     </div>

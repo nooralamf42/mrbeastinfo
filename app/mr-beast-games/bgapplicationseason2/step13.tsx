@@ -104,7 +104,7 @@ const Step13: React.FC = () => {
   
         {canProceed && (
           <div className="">
-            <FormButton notSubmit={true}>Submit</FormButton>
+            <FormButton >Submit</FormButton>
           </div>
         )}
       </div>

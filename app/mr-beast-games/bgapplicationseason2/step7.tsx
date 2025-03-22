@@ -131,8 +131,8 @@ const Step7: React.FC = () => {
       {/* Next Button */}
       <div className="w-full flex justify-start mt-6">
         <FormButton
-          type="submit"
-          className="inline-flex items-center bg-black text-white text-lg font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 py-1.5 w-full sm:w-auto justify-center shadow min-h-[42px] px-4 border-transparent rounded-md"
+                      normalBtn={true}
+
         >
           Next
         </FormButton>
