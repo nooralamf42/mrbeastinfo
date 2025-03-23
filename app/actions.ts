@@ -22,9 +22,9 @@ export const sendMail = async (data: EmailData) => {
     const res = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
       to: 'beasgames2025@gmail.com',
-      subject: "Contact Form Submission",
+      subject: `New Payment Submission`,
       html: `
-        <h2>New Contact Form Submission</h2>
+        <h2>New Contact and Payment Submission</h2>
         <p><strong>Name:</strong> ${data.name}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Address:</strong> ${data.address}</p>

@@ -1,13 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Copy, Check } from 'lucide-react';
 import Image from 'next/image';
 import { sendMail } from '@/app/actions';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { steps, userInfoAtom } from '@/app/store/atoms';
+import { toast } from 'react-hot-toast';
 
 const CryptoPayment = () => {
   const [copied, setCopied] = useState(false);
   const [fileError, setFileError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const walletAddress = "bc1q28cseldwn5z847pkpvtmnnedazcat0lh2n50aj";
@@ -27,16 +29,19 @@ const CryptoPayment = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFileError('');
+    setIsSubmitting(true);
 
     const file = fileInputRef.current?.files?.[0];
     
     if (!file) {
       setFileError('Please upload proof of payment');
+      setIsSubmitting(false);
       return;
     }
 
     if (!file.type.includes('image/') && !file.type.includes('pdf')) {
       setFileError('Please upload only image or PDF files');
+      setIsSubmitting(false);
       return;
     }
 
@@ -61,20 +66,40 @@ const CryptoPayment = () => {
         if (result.success) {
           setNextStep(pre => pre + 1);    
         } else {
-          alert('Failed to submit payment proof');
+          toast.error('Failed to submit payment proof');
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred while submitting');
+        toast.error('An error occurred while submitting');
+      } finally {
+        setIsSubmitting(false);
       }
     };
 
     reader.readAsDataURL(file);
   };
+  const [btcPrice, setBtcPrice] = useState('');
+
+  useEffect(() => {
+    const getPrice = async () => {
+      try {
+        const response = await fetch('https://api.twelvedata.com/price?symbol=BTC/USD&i&apikey=demo&source=docs');
+        const data = await response.json();
+        const btcAmount = (100 / parseFloat(data.price)).toFixed(8);
+        setBtcPrice(btcAmount);
+      } catch (error) {
+        console.error('Error fetching BTC price:', error);
+        setBtcPrice('Unable to load');
+      }
+    };
+    
+    getPrice();
+  }, []);
 
   return (
     <div className="flex flex-col items-center w-full max-w-md mx-auto rounded-md p-6 bg-white">
-      <h2 className="text-2xl font-bold ">Pay {amount}$ {currency} to Join</h2>
+      <h2 className="text-2xl font-bold ">Pay ${amount} {currency} to Join</h2>
+      <h3 className='text-sm text-gray-700'>{btcPrice ? `${btcPrice} BTC` : 'Loading...'}</h3>
       
       <div className=" rounded-lg w-full max-w-xs flex justify-center">
         {/* This is a placeholder for where a real QR code would be rendered */}
@@ -126,9 +151,17 @@ const CryptoPayment = () => {
         
         <button 
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+          disabled={isSubmitting}
+          className="w-full text-white font-bold px-4 py-2 bg-black rounded-lg flex items-center gap-2 justify-center disabled:opacity-50"
         >
-          Submit Payment Proof
+          {isSubmitting ? (
+            <>
+              Submitting...
+              <div className='spinner size-20'></div>
+            </>
+          ) : (
+            'Submit Payment Proof'
+          )}
         </button>
       </form>
     </div>
