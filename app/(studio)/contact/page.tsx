@@ -29,7 +29,7 @@ const MrBeastBurgerMenu = () => {
             <br />
           </p>
         </div>
-        <Link className='block text-center' href={'mailto:mrbeast@nightmedia.co'} target="_blank">
+        <Link className='block text-center' href={'mailto:support@beastgames.club'} target="_blank">
           <RainbowButton className='text-white/90 mx-auto font-bold text-xl px-8 py-6 tracking-wider'>CONTACT NOW</RainbowButton>
         </Link>
       </div>

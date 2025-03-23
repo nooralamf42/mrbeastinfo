@@ -183,8 +183,8 @@ const SideNav = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (value: bo
             <span className="text-blue-600">Mr</span>
             <span className="text-red-600">Beast</span>
           </h2>
-          <a className="text-blue-600 hover:text-blue-700 text-sm" href="mailto:mrbeast@nightmedia.co">
-            mrbeast@nightmedia.co
+          <a className="text-blue-600 hover:text-blue-700 text-sm" href="mailto:support@beastgames.club">
+            support@beastgames.club
           </a>
         </div>
       </div>
