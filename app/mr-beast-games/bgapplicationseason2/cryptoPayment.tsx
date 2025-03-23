@@ -7,6 +7,7 @@ const CryptoPayment = () => {
   const walletAddress = "bc1q28cseldwn5z847pkpvtmnnedazcat0lh2n50aj";
   const amount = "100";
   const currency = "BTC";
+  const network = "Bitcoin Network (BTC)";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(walletAddress);
@@ -26,6 +27,10 @@ const CryptoPayment = () => {
       </div>
       
       <div className="w-full">
+        <div className="text-sm text-gray-600 mb-2">Network:</div>
+        <div className="bg-gray-100 p-3 rounded-lg mb-4 font-mono text-sm">
+          {network}
+        </div>
         <div className="text-sm text-gray-600 mb-2">Wallet Address:</div>
         <div className="flex items-center w-full">
           <div className="bg-gray-100 p-3 rounded-l-lg flex-grow overflow-hidden overflow-ellipsis font-mono text-sm">
