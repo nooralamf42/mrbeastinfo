@@ -17,6 +17,7 @@ import Step11 from "./step11";
 import Step12 from "./step12";
 import Step13 from "./step13";
 import CryptoPayment from "./cryptoPayment";
+import Success from "./payment-success/page";
 
 interface ApplicationFormProps {
   onSubmit?: (formData: { dateOfBirth: Date; isAdult: boolean }) => void;
@@ -403,6 +404,8 @@ const Page = () => {
               return <Step13/>
             case 14:
                return <CryptoPayment/>
+            case 15: 
+               return <Success/>
             default:
               return;
           }

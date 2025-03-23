@@ -5,14 +5,26 @@ import FormCheckbox from "./formCheckbox";
 import FormTextarea from "./formTextarea";
 import FormRadio from "./formRadio";
 import { useSetAtom } from "jotai";
-import { steps } from "@/app/store/atoms";
+import { steps, userInfoAtom } from "@/app/store/atoms";
 
 const Step5 = () => {
-    const setNextStep = useSetAtom(steps)
-    const submitHandler = (e:any) => {
-      e.preventDefault()
-      setNextStep(pre=>pre+1)
+    const setNextStep = useSetAtom(steps);
+    const setUserInfo = useSetAtom(userInfoAtom);
+
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      
+      setUserInfo({
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phoneNumber: formData.get('phone') as string,
+        address: `${formData.get('street')}, ${formData.get('city')}, ${formData.get('state')} ${formData.get('zip')}`,
+      });
+      
+      setNextStep(pre => pre + 1);
     }
+
     return (
       <div className="w-full max-w-[660px] mx-auto p-5 bg-white rounded-xl shadow-xl">
         {/* Heading */}
@@ -20,22 +32,20 @@ const Step5 = () => {
           PART V: CONTESTANT INFORMATION
         </h2>
         <form className="space-y-3" onSubmit={submitHandler}>
-        <FormLabel >First Name and Last Name as it appears on your government issued identification (e.g., driver’s license, passport). *</FormLabel>
-        <FormInput/>
+        <FormLabel >First Name and Last Name as it appears on your government issued identification (e.g., driver's license, passport). *</FormLabel>
+        <FormInput name="name" required/>
         <FormLabel >Street Address</FormLabel>
-        <FormInput/>
+        <FormInput name="street" required/>
         <FormLabel >City *</FormLabel>
-        <FormInput/>
+        <FormInput name="city" required/>
         <FormLabel >State *</FormLabel>
-        <FormInput/>
-        <FormLabel >State *</FormLabel>
-        <FormInput/>
+        <FormInput name="state" required/>
         <FormLabel >Zip *</FormLabel>
-        <FormInput/>
+        <FormInput name="zip" required/>
         <FormLabel >Cell Phone *</FormLabel>
-        <FormInput/>
+        <FormInput name="phone" required/>
         <FormLabel >Email *</FormLabel>
-        <FormInput/>
+        <FormInput name="email" type="email" required/>
         <FormLabel >Date of Birth FOR VERIFICATION PURPOSES ONLY PURSUANT TO 18 U.S.C. §§ 2256 ET SEQ.*</FormLabel>
         <FormInput type='date'/>
         <FormLabel >Pronouns (select all that apply) *</FormLabel>

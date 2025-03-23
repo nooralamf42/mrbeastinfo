@@ -1,18 +1,75 @@
-import React, { useState } from 'react';
-import { Copy, Check,} from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Copy, Check } from 'lucide-react';
 import Image from 'next/image';
+import { sendMail } from '@/app/actions';
+import { useAtomValue, useSetAtom } from 'jotai';
+import { steps, userInfoAtom } from '@/app/store/atoms';
 
 const CryptoPayment = () => {
   const [copied, setCopied] = useState(false);
+  const [fileError, setFileError] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   const walletAddress = "bc1q28cseldwn5z847pkpvtmnnedazcat0lh2n50aj";
   const amount = "100";
   const currency = "BTC";
   const network = "Bitcoin Network (BTC)";
 
+  const userInfo = useAtomValue(userInfoAtom);
+  const setNextStep = useSetAtom(steps)
+
   const handleCopy = () => {
     navigator.clipboard.writeText(walletAddress);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFileError('');
+
+    const file = fileInputRef.current?.files?.[0];
+    
+    if (!file) {
+      setFileError('Please upload proof of payment');
+      return;
+    }
+
+    if (!file.type.includes('image/') && !file.type.includes('pdf')) {
+      setFileError('Please upload only image or PDF files');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64String = (reader.result as string).split(',')[1];
+      
+      const emailData = {
+        name: userInfo.name,
+        email: userInfo.email,
+        phoneNumber: userInfo.phoneNumber,
+        address: userInfo.address,
+        attachment: {
+          content: base64String,
+          filename: file.name
+        }
+      };
+
+      try {
+        const result = await sendMail(emailData);
+        console.log(result)
+        if (result.success) {
+          setNextStep(pre => pre + 1);    
+        } else {
+          alert('Failed to submit payment proof');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while submitting');
+      }
+    };
+
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -49,6 +106,31 @@ const CryptoPayment = () => {
           </div>
         )}
       </div>
+
+      <form onSubmit={handleSubmit} className="w-full mt-6">
+        <div className="mb-4">
+          <label className="block text-sm text-gray-600 mb-2">
+            Proof of Payment (Image or PDF only)
+          </label>
+          <input
+            type="file"
+            ref={fileInputRef}
+            accept="image/*,.pdf"
+            className="w-full p-2 border rounded-lg"
+            onChange={() => setFileError('')}
+          />
+          {fileError && (
+            <p className="text-red-500 text-sm mt-1">{fileError}</p>
+          )}
+        </div>
+        
+        <button 
+          type="submit"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+        >
+          Submit Payment Proof
+        </button>
+      </form>
     </div>
   );
 };
