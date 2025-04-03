@@ -20,7 +20,7 @@ export const sendMail = async (data: EmailData) => {
 
   try {
     const res = await resend.emails.send({
-      from: 'beasgames2025@gmail.com',
+      from: 'Beast Games <onboarding@resend.dev>',
       to: 'beast.gamess2025@gmail.com',
       subject: `New Payment Submission`,
       html: `
